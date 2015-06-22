@@ -1,12 +1,8 @@
 class Scrabble
   def score(word)
-    if word == "" || word == nil
-      0
-    else
-      score = word.upcase.chars.map do |letter|
-        point_values[letter]
-      end
-      score.inject(:+)
+    return 0 if word == "" || word == nil
+    word.upcase.chars.inject(0) do |score, letter|
+      score + point_values[letter]
     end
   end
 
@@ -20,5 +16,11 @@ class Scrabble
       "U"=>1, "V"=>4, "W"=>4, "X"=>8,
       "Y"=>4, "Z"=>10
     }
+  end
+
+  def score_with_multipliers(word, multipliers)
+    word.chars.map.with_index do |letter, index|
+      multipliers[index] * score(letter)
+    end.inject(:+)
   end
 end

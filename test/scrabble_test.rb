@@ -25,8 +25,13 @@ class ScrabbleTest < Minitest::Test
     assert_equal 0, Scrabble.new.score(nil)
   end
 
-  def test_it_returns_0_for_any_non_alphabetic_character
-    skip
-    assert_equal 0, Scrabble.new.score("1354l;kjd")
+  def test_it_scores_a_letter_with_letter_multipliers
+    game = Scrabble.new
+    assert_equal 5, game.score_with_multipliers('a', [5])
+  end
+
+  def test_it_scores_letters_with_letter_multipliers
+    game = Scrabble.new
+    assert_equal 9, game.score_with_multipliers('hello', [1,2,1,1,1])
   end
 end
