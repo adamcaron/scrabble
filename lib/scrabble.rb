@@ -3,10 +3,10 @@ class Scrabble
     if word == "" || word == nil
       0
     else
-      word = word.upcase.chars.map do |letter|
+      score = word.upcase.chars.map do |letter|
         point_values[letter]
       end
-      word.inject(:+)
+      score.inject(:+)
     end
   end
 
