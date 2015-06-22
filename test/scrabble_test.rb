@@ -10,23 +10,23 @@ class ScrabbleTest < Minitest::Test
   end
 
   def test_it_scores_a_two_letter_word
-    skip
     assert_equal 5, Scrabble.new.score("hi")
   end
 
   def test_it_scores_words_with_more_than_two_letters
-    skip
+    assert_equal 16, Scrabble.new.score("zebra")
   end
 
   def test_it_returns_a_0_score_for_empty_input
-    skip
+    assert_equal 0, Scrabble.new.score("")
   end
 
   def test_it_returns_a_0_score_for_nil_input
-    skip
+    assert_equal 0, Scrabble.new.score(nil)
   end
 
   def test_it_returns_0_for_any_non_alphabetic_character
     skip
+    assert_equal 0, Scrabble.new.score("1354l;kjd")
   end
 end
